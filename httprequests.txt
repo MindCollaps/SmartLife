@@ -1,0 +1,3 @@
+ESP Server has following http requests (Standalone):
+/getconfig - returns config json file
+/setup/ - args: wifissid, wifipw
