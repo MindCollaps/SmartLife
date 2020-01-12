@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name" translatable="false">Smart Life</string>
+    <string name="no_connection_to_bridge">No connection to Smart Life Bridge!</string>
+    <string name="button_start_connection">connect</string>
+    <string name="wellcome_text">Hello and wellcome to Smart Life. You should connect the Smart Life Bridge with your mobile first to continue with other settings.</string>
+    <string name="button_conect_smart_life_bridge">Connect my Bridge</string>
+    <string name="menu_txt_setting">Setting</string>
+    <string name="menu_txt_configure">Configuration</string>
+    <string name="menu_txt_bridge" translatable="false">Bridge</string>
+    <string name="button_disconnect">Disconnect</string>
+    <string name="word_name">Name</string>
+
+</resources>

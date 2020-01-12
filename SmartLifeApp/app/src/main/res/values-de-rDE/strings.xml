@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="no_connection_to_bridge">Keine Verbindung zur Smart Liefe Bridge!</string>
+    <string name="button_start_connection">verbinden</string>
+    <string name="wellcome_text">Hallo und willkommen bei Smart Life. Du solltest als erstes deine Smart Life Bridge mit deinem Handy verbinden, um mit dem Einstellen anderer Einstellungen fortzufahren.</string>
+    <string name="button_conect_smart_life_bridge">Verbinde meine Bridge</string>
+    <string name="menu_txt_setting">Einstellungen</string>
+    <string name="menu_txt_configure">Konfiguration</string>
+    <string name="button_disconnect">trennen</string>
+    <string name="word_name">Name</string>
+</resources>

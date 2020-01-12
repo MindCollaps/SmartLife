@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAppBackground">@color/colorPrimaryDark</color>
+    <color name="colorDefaultTextColor">#FFFFFF</color>
+    <color name="colorAccess">#FF0008</color>
+    <color name="color">#1BB400</color>
+
+    <color name="colorBarBottom">#001861</color>
+    <color name="colorBarBottomIcon">#FFFFFF</color>
+
+    <color name="colorLoading">#00F2FF</color>
+
+    <color name="colorAppComponent">#353535</color>
+    <color name="colorPrimary">#001857</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#1C009B</color>
+</resources>
