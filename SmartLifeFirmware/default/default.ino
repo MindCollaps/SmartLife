@@ -5,12 +5,12 @@ void setupModul() {
 
 //ab address 102
 void eepromWrites() {
-  
+
 }
 
 //ab address 102
 void eepromReads() {
-  
+
 }
 
 //Modul config
@@ -57,13 +57,11 @@ void setup() {
   SPIFFS.begin();
   delay(1000);
   if (shutdownsInRow >= 4) {
-      configMode = true;
-    }
+    configMode = true;
+  }
 
   if (standAlone) {
     setupWifiConnection();
-    setupServer();
-    setupDns();
   } else {
     Serial.println("A non standalone system isn't working yet! Stand alone goes back to true!");
     standAlone = true;
@@ -72,15 +70,15 @@ void setup() {
     delay(1000);
     ESP.restart();
   }
-  
-  setupServer();
-  setupDns();
 
   if (!configMode) {
     setupModul();
   } else {
     setupWiFiAp();
   }
+
+  setupServer();
+  setupDns();
 }
 
 void loop() {
@@ -99,7 +97,7 @@ void setupServer() {
     server.send(200, "text/plain", "Hellu");
   });
 
-  server.on(httpGetConfig,[](){
+  server.on(httpGetConfig, []() {
     sendDataFromSpiff(locationConfigJson);
   });
 
@@ -122,12 +120,12 @@ void handleSetup() {
   }
 }
 
-void sendDataFromSpiff(String path){
+void sendDataFromSpiff(String path) {
   Serial.println("Sending data from spiff");
   File dataFile = SPIFFS.open(path.c_str(), "r");
   if (server.streamFile(dataFile, "application/octet-stream") != dataFile.size()) {
   }
- 
+
   dataFile.close();
   Serial.println("Sended!");
 }
@@ -139,6 +137,10 @@ void setupDns() {
 }
 
 void setupWifiConnection() {
+  if (wlanSsid == "" || wlanPw == "") {
+    configMode = true;
+    return;
+  }
   WiFi.begin(wlanSsid, wlanPw);
   Serial.println("Connect to WiFi ...");
   int tried = 0;
@@ -147,8 +149,9 @@ void setupWifiConnection() {
     Serial.print(".");
     tried++;
     if (tried >= 200) {
-
-      }
+      configMode = true;
+      return;
+    }
   }
   Serial.println();
   Serial.println("WiFi connected!");
