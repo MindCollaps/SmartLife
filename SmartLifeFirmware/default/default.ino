@@ -46,7 +46,7 @@ String wlanPw = "";
 #define httpSetupSafe "safe"
 
 //File System
-#define locationConfigJson "data/config.json"
+#define locationConfigJson "data\config.json"
 
 void setup() {
   Serial.begin(9600);
