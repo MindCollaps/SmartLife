@@ -46,7 +46,7 @@ String wlanPw = "";
 #define httpSetupSafe "safe"
 
 //File System
-#define locationConfigJson "data\config.json"
+#define locationConfigJson "/config.json"
 
 void setup() {
   Serial.begin(9600);
@@ -151,7 +151,7 @@ void handleSetup() {
 
 void sendDataFromSpiff(String path) {
   Serial.println("Sending data from spiff");
-  File dataFile = SPIFFS.open(path.c_str(), "r");
+  File dataFile = SPIFFS.open(path, "r");
   if(!dataFile){
     Serial.println("Config data is missing!!!!!!");
   }
