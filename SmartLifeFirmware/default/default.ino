@@ -20,8 +20,9 @@ void eepromReads() {
 #include <ESP8266WebServer.h>
 #include <EEPROM.h>
 #include <FS.h>
+#include <time.h>
 
-String modulName = "SL" + ESP.getChipId();
+String modulName = "test_modul";
 String modulVersion = "1.0";
 
 //default config values
@@ -37,76 +38,95 @@ String wlanPw = "";
 //Http request definition:
 #define httpGetConfig "/getconfig"
 
-#define httpSetup "/setup/"
+#define httpSetup "/setup"
 #define httpSetupVSsid "wifissid"
 #define httpSetupVPw "wifipw"
+//?reboot=t / f
+#define httpSetupReboot "reboot"
+#define httpSetupSafe "safe"
 
 //File System
 #define locationConfigJson "config.json"
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
+  Serial.println();
+  Serial.print("Hello, ");
   Serial.print(modulName);
   Serial.print(" Version: ");
   Serial.print(modulVersion);
   Serial.println(" started!");
-
-  EEPROM.begin(4096);
   readMemory();
-  SPIFFS.begin();
-  delay(1000);
   if (shutdownsInRow >= 4) {
     configMode = true;
   }
+
+  delay(100);
 
   if (standAlone) {
     setupWifiConnection();
   } else {
     Serial.println("A non standalone system isn't working yet! Stand alone goes back to true!");
     standAlone = true;
-    Serial.println("rebooting!!!");
-    writeMemory();
-    delay(1000);
-    ESP.restart();
+    reboot(true);
   }
 
   if (!configMode) {
     setupModul();
   } else {
     setupWiFiAp();
+    
   }
 
-  setupServer();
   setupDns();
+  setupServer();
+
+  Serial.println("Setting up SPIFFS");
+  SPIFFS.begin();
+
+  Serial.println();
+  Serial.println("Esp running on: ");
+  Serial.print(WiFi.localIP());
+  Serial.println();
+  Serial.println();
 }
 
 void loop() {
   server.handleClient();
+  MDNS.update();
 }
 
 void setupServer() {
-
+  Serial.println("Starting server...");
   //not found
   server.onNotFound([]() {
     server.send(404, "text/plain", "Link wurde nicht gefunden!");
+    Serial.println("Server recived 404");
   });
 
   //Homepage
   server.on("/", []() {
     server.send(200, "text/plain", "Hellu");
+    Serial.println("Server recived /");
   });
 
   server.on(httpGetConfig, []() {
+    Serial.println("Server recived /getconfig");
     sendDataFromSpiff(locationConfigJson);
+    Serial.println("Server recived /%httpGetConfig");
   });
 
   server.on(httpSetup, HTTP_GET, handleSetup);
 
   server.begin();
+
+  Serial.println("Server online!");
 }
 
 void handleSetup() {
+  Serial.println("Server recived /setup");
+  server.send(200, "text/plain", "recived");
   if (server.hasArg(httpSetupVSsid)) {
     wlanSsid = server.arg(httpSetupVSsid);
     Serial.print("Set Wifi ssid to ");
@@ -118,38 +138,58 @@ void handleSetup() {
     Serial.print("Set Wifi pw to ");
     Serial.println(wlanPw);
   }
+
+  if(server.hasArg(httpSetupSafe)){
+    writeMemory();
+  }
+
+  if(server.hasArg(httpSetupReboot)){
+    server.send(200, "text/plain", "rebooting");
+    reboot(false);
+  }
 }
 
 void sendDataFromSpiff(String path) {
   Serial.println("Sending data from spiff");
   File dataFile = SPIFFS.open(path.c_str(), "r");
-  if (server.streamFile(dataFile, "application/octet-stream") != dataFile.size()) {
+  if(!dataFile){
+    Serial.println("Config data is missing!!!!!!");
   }
-
+  server.sendHeader("Content-Disposition", "attachment; filename="+path);
+  server.streamFile(dataFile, "application/octet-stream");
   dataFile.close();
   Serial.println("Sended!");
 }
 
 void setupDns() {
   if (MDNS.begin(modulName)) {
-    Serial.print("DNS gestartet!");
+    Serial.println("DNS gestartet!");
+  } else {
+    Serial.println("DNS error!!!");
+    return;
   }
+  MDNS.addService("http", "tcp", 80);
 }
 
 void setupWifiConnection() {
+  Serial.println("Setting up WiFi connection...");
+  Serial.println(wlanSsid);
+  Serial.println(wlanPw);
   if (wlanSsid == "" || wlanPw == "") {
     configMode = true;
     return;
   }
+  WiFi.mode(WIFI_STA);
   WiFi.begin(wlanSsid, wlanPw);
-  Serial.println("Connect to WiFi ...");
+  Serial.print("Connect to WiFi ...");
   int tried = 0;
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
     tried++;
-    if (tried >= 200) {
+    if (tried >= 100) {
       configMode = true;
+      Serial.println("Wifi connection failed, going in config mode!");
       return;
     }
   }
@@ -163,61 +203,69 @@ void setupWiFiAp() {
   Serial.println("Acces point active!");
 }
 
-byte makeBoolByte(bool b[7]) {
-  byte by;
-  for (int i = 0; i < 7; i++) {
-    by.bitSet(b[i], i);
-  }
-  return by;
-}
-
-
 //WLAN SSID: address 0 - 34
 //WLAN PW: address 35 - 100
 //config stand alone: address 101
 void readMemory() {
-  Serial.println("Reading EEPROM");
+  EEPROM.begin(4096);
+  Serial.println("Reading EEPROM...");
+  Serial.print(" Reading wlanssid: ");
   wlanSsid = readStringFromEeprom(0, 34);
+  Serial.print(wlanSsid);
+  Serial.print(" ...Reading wlanpw: ");
   wlanPw = readStringFromEeprom(35, 100);
+  Serial.print(wlanPw);
   standAlone = (bool) EEPROM.read(101);
-
+  
   eepromReads();
+  EEPROM.end();
+  Serial.println();
 }
 
 void writeMemory() {
+  EEPROM.begin(4096);
   Serial.println("Writing EEPROM");
   if (wlanSsid != "") {
     writeStringToEeprom(0, wlanSsid);
   }
-
   if (wlanPw != "") {
     writeStringToEeprom(35, wlanPw);
   }
-
-  EEPROM.write(101, (byte) standAlone);
-
+  EEPROM.put(101, (byte) standAlone);
+  eepromWrites();
   if (EEPROM.commit()) {
     Serial.println("EEPROM successfully committed!");
   } else {
     Serial.println("ERROR! EEPROM commit failed");
   }
-
-  eepromWrites();
+  EEPROM.end();
 }
 
 void writeStringToEeprom(int startAdr, String writeString) {
+  writeString = writeString + char('\0');
   int charLength = writeString.length();
   for (int i = 0; i < charLength; ++i) {
-    EEPROM.write(startAdr + i, writeString[i]);
+    EEPROM.put(startAdr + i, writeString[i]);
   }
 }
 
 
 String readStringFromEeprom(int startAdr, int maxLength) {
   String s;
+  char c;
   for (int i = 0; i < maxLength; ++i) {
-    s += char(EEPROM.read(startAdr + i));
-    if (s[i] = '\0') break; //break when end of sting is reached before maxLength
+    EEPROM.get(startAdr + i, c);
+    if (c == '\0') break;
+    s += c;
   }
   return s;
+}
+
+void reboot(boolean safe){
+  Serial.println("Rebooting...");
+  if(safe){
+    writeMemory();
+    delay(100);
+  }
+  ESP.restart();
 }
