@@ -38,7 +38,7 @@ String wlanPw = "";
 //File System
 #define locationConfigJson "/config.json"
 
-Adafruit_NeoPixel strip(60, 14, NEO_GBR + NEO_KHZ800);
+Adafruit_NeoPixel strip(60, 5, NEO_GBR + NEO_KHZ800);
 
 void colorWipe(uint32_t color, int wait) {
   for (int i = 0; i < strip.numPixels(); i++) {
@@ -128,21 +128,13 @@ void setupModul() {
 
 
       if (argument == "tchase") {
-        while (runEffect) {
-          theaterChaseRainbow(s);
-        }
+        theaterChaseRainbow(s);
       } else if (argument == "rchase") {
-        while (runEffect) {
-          theaterChase(color, s);
-        }
+        theaterChase(color, s);
       } else if (argument == "rainbow") {
-        while (runEffect) {
-          rainbow(s);
-        }
+        rainbow(s);
       } else if (argument == "colorwipe") {
-        while (runEffect) {
-          colorWipe(color, s);
-        }
+        colorWipe(color, s);
       }
     }
   });
@@ -249,9 +241,9 @@ void setupServer() {
       reboot(false);
     }
   });
-server.begin();
+  server.begin();
 
-Serial.println("Server online!");
+  Serial.println("Server online!");
 }
 
 //void sendDataFromSpiff(String path, AsyncWebServerRequest *request) {
