@@ -35,10 +35,10 @@ String wlanPw = "";
 //File System
 #define locationConfigJson "/config.json"
 
-#define NUM_LEDS    60
+#define NUM_LEDS    300
 #define LED_TYPE      WS2811
 #define COLOR_ORDER   RGB
-#define DATA_PIN    5
+#define DATA_PIN    14
 
 CRGB leds[NUM_LEDS];
 
@@ -46,7 +46,7 @@ CRGB color(40, 0, 255);
 int brightness = 155;
 uint8_t gHue = 0; // rotating "base color"
 int ledSpeed = 40;
-LedEffect ledEffect = null;
+//LedEffect ledEffect = null;
 
 //Modul type config
 void setupModul() {
@@ -193,8 +193,8 @@ void setup() {
   setupDns();
   setupServer();
 
-  Serial.println("Setting up SPIFFS");
-  SPIFFS.begin();
+  //Serial.println("Setting up SPIFFS");
+  //SPIFFS.begin();
 
   Serial.println();
   Serial.println("Esp running on: ");
@@ -207,7 +207,7 @@ void loop() {
   server.handleClient();
   MDNS.update();
   EVERY_N_MILLISECONDS(ledSpeed) {
-    ledEffect.action();
+    //ledEffect.action();
     gHue++;  // slowly cycle the "base color" through the rainbow
   }
 }
@@ -385,16 +385,16 @@ void reboot(boolean safe) {
   ESP.restart();
 }
 
-class LedEffect {
-  public:
-    LedEffect(String name);
-
-    String name;
-    typedef std::function<void(void)> ActionHandler;
-
-    void action(ActionHandler handler);
-
-    LedEffect::LedEffect(String name){
-      _name = name;
-    }
-}
+//class LedEffect {
+//  public:
+//    LedEffect(String name);
+//
+//    String name;
+//    typedef std::function<void(void)> ActionHandler;
+//
+//    void action(ActionHandler handler);
+//
+//    LedEffect::LedEffect(String name){
+//      _name = name;
+//    }
+//}

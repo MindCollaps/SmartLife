@@ -1,14 +1,18 @@
-package mindcollaps.sceneController;
+package mindcollaps.sceneCore.sceneController;
 
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import mindcollaps.engines.Engine;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable {
 
     Engine engine;
+    Stage stage;
     Stage primaryStage;
-    Stage mainStage;
     Scene scene;
 
     public Engine getEngine() {
@@ -19,12 +23,12 @@ public class Controller {
         this.engine = engine;
     }
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
+    public Stage getStage() {
+        return stage;
     }
 
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     public Scene getScene() {
@@ -36,9 +40,14 @@ public class Controller {
     }
 
     public void initController(Engine engine, Stage primaryStage, Scene scene, Stage mainStage) {
-        this.mainStage = mainStage;
-        this.primaryStage = primaryStage;
+        this.primaryStage = mainStage;
+        this.stage = primaryStage;
         this.engine = engine;
         this.scene = scene;
+        primaryStage.setScene(scene);
+    }
+
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }

@@ -2,10 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d108d285-2d6b-4c9d-b034-81c19fd2ed7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/sceneController/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/engines/ViewEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/AllertBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/MoveListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/utils/FileUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/scenes/home.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/scenes/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartLifeFirmware/default/default.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeFirmware/default/default.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindcollaps/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/core/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mindcollaps/sceneController/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LEDStripv2.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LEDStripv2.ino" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,40 +27,42 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/core/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+            <state relative-caret-position="221">
+              <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
               <folding>
-                <element signature="e#90#91#0" expanded="true" />
-                <element signature="e#140#141#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#212#213#0" expanded="true" />
+                <element signature="e#236#237#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+            <state relative-caret-position="291">
+              <caret line="21" column="35" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneController/Controller.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state>
+              <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#414#415#0" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +71,39 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="323">
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/HomeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="131" column="25" lean-forward="true" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3758#3759#0" expanded="true" />
+                <element signature="e#3795#3796#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/engines/ViewEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#397#398#0" expanded="true" />
+                <element signature="e#415#416#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,6 +113,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -80,8 +125,23 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/utils/FileUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/mindcollaps/core/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/engines/ViewEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/mindcollaps/sceneController/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/sceneController/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/MoveListener.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/scenes/home.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/AllertBox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/Feature.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/Modul.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/Device.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/features/Feature.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/features/FeatureWs2812b.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/jsonCore/JsonCore.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/HomeController.java" />
       </list>
     </option>
   </component>
@@ -102,8 +162,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2207" />
-    <option name="y" value="104" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -113,6 +173,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,17 +207,32 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="mindcollaps" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ComponentCreator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartLifeComponentCreator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ComponentCreator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartLifeComponentCreator" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="scenes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/scenes" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -164,7 +240,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="mindcollaps.sceneCore" />
+      <recent name="mindcollaps.utils" />
       <recent name="mindcollaps.sceneController" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Noah\Documents\____Coding\GitHub\SmartLife\SmartLifeComponentCreator\src\main\resources\scenes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -225,9 +306,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="104" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -236,9 +318,9 @@
       <window_info id="Learn" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -257,38 +339,204 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/core/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/utils/FileUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          <folding>
-            <element signature="e#90#91#0" expanded="true" />
-            <element signature="e#140#141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneController/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="170">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        <state relative-caret-position="291">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/scenes/style.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/javafx-src.zip!/javafx/event/EventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+        <state relative-caret-position="357">
+          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/MoveListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/AllertBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="160" column="58" selection-start-line="160" selection-start-column="58" selection-end-line="160" selection-end-column="58" />
+          <folding>
+            <element signature="e#2443#2444#0" expanded="true" />
+            <element signature="e#2523#2524#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4062#4063#0" expanded="true" />
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5189#5190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/core/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="38" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#236#237#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/scenes/home.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/engines/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/engines/ViewEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#415#416#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/Modul.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding>
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/Device.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/features/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#151#152#0" expanded="true" />
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#323#324#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/modulLibary/features/FeatureWs2812b.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="61" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/jsonCore/JsonCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mindcollaps/sceneCore/sceneController/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="131" column="25" lean-forward="true" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3758#3759#0" expanded="true" />
+            <element signature="e#3795#3796#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
