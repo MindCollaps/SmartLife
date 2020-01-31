@@ -1,21 +1,29 @@
 package mindcollaps.utils;
 
 import mindcollaps.engines.Engine;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 
 public class FileUtils {
 
     Engine engine;
+    String homeName;
 
-    public FileUtils(Engine engine) {
+    File file;
+    JSONParser parser = new JSONParser();
+    JSONObject object;
+
+    public FileUtils(Engine engine, String homeName) {
         this.engine = engine;
+        this.homeName = homeName;
     }
 
     public String home = System.getProperty("user.dir");
 
     public String getHome() {
-        return home + "/botmanagerhome";
+        return home + "/" + homeName;
     }
 
     public Object loadObject(String path) throws Exception {
@@ -69,6 +77,28 @@ public class FileUtils {
 
         stream.close();
 
+    }
+
+    public JSONObject loadJsonFile(String path) throws Exception {
+        file = new File(path);
+        try {
+            Reader reader = new FileReader(file.getAbsolutePath());
+            object = (JSONObject) parser.parse(reader);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("ERRORORORRO!!!!");
+            throw new Exception("File load error");
+        }
+        return object;
+    }
+
+    public void saveJsonFile(String path, JSONObject object){
+        try {
+            FileWriter fileWriter = new FileWriter(path);
+            fileWriter.write(object.toJSONString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

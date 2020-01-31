@@ -9,6 +9,10 @@
 #include <FS.h>
 #include <time.h>
 
+//own classes
+#include "LedEffect.h"
+
+
 String modulName = "test_modul";
 String modulVersion = "1.0";
 
@@ -35,9 +39,9 @@ String wlanPw = "";
 //File System
 #define locationConfigJson "/config.json"
 
-#define NUM_LEDS    300
+#define NUM_LEDS    294
 #define LED_TYPE      WS2811
-#define COLOR_ORDER   RGB
+#define COLOR_ORDER   GRB
 #define DATA_PIN    14
 
 CRGB leds[NUM_LEDS];
@@ -46,7 +50,9 @@ CRGB color(40, 0, 255);
 int brightness = 155;
 uint8_t gHue = 0; // rotating "base color"
 int ledSpeed = 40;
-//LedEffect ledEffect = null;
+
+//Effects
+LedEffect rainbow();
 
 //Modul type config
 void setupModul() {
@@ -60,9 +66,14 @@ void setupModul() {
   Serial.println("Device ready!!!");
 }
 
+void initEffect(){
+  rainbow.onAction();
+}
+
 void setupServerModul() {
   server.on("/fillsolid", HTTP_GET, []() {
     server.send(200, "text/plain", "recived");
+    Serial.println("recived fill solid");
     getBrightnessFromServer();
     getRGBFromServer();
     fill_solid(leds, NUM_LEDS, color);
@@ -260,6 +271,7 @@ void handleSetup() {
 
   if (server.hasArg(httpSetupReboot)) {
     server.send(200, "text/plain", "rebooting");
+    delay(1000);
     reboot(false);
   }
 }
@@ -384,17 +396,3 @@ void reboot(boolean safe) {
   }
   ESP.restart();
 }
-
-//class LedEffect {
-//  public:
-//    LedEffect(String name);
-//
-//    String name;
-//    typedef std::function<void(void)> ActionHandler;
-//
-//    void action(ActionHandler handler);
-//
-//    LedEffect::LedEffect(String name){
-//      _name = name;
-//    }
-//}

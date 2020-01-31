@@ -23,6 +23,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#onOpenModulClicked" text="Open Modul" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onSafeClicked" text="Safe" />
+                  <MenuItem mnemonicParsing="false" onAction="#onSafeAsClicked" text="Safe as ..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onCloseClicked" text="Close" />
                </items>
