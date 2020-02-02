@@ -11,7 +11,7 @@
 
 //own classes
 #include "LedEffect.h"
-
+#include "LedStrip.h"
 
 String modulName = "test_modul";
 String modulVersion = "1.0";
@@ -39,120 +39,17 @@ String wlanPw = "";
 //File System
 #define locationConfigJson "/config.json"
 
-#define NUM_LEDS    294
-#define LED_TYPE      WS2811
-#define COLOR_ORDER   GRB
-#define DATA_PIN    14
-
-CRGB leds[NUM_LEDS];
-
-CRGB color(40, 0, 255);
-int brightness = 155;
-uint8_t gHue = 0; // rotating "base color"
-int ledSpeed = 40;
-
-//Effects
-LedEffect rainbow();
+//Strip controller
+#define NUM_STRIPS 0
+LedStrip* stripTable;
 
 //Modul type config
 void setupModul() {
   Serial.println("Setup modul");
-  FastLED.addLeds<LED_TYPE, DATA_PIN>(leds, NUM_LEDS);
-  FastLED.setBrightness(brightness);
-  fill_solid(leds, NUM_LEDS, color);
-  FastLED.show();
-
-  setupServerModul();
-  Serial.println("Device ready!!!");
-}
-
-void initEffect(){
-  rainbow.onAction();
-}
-
-void setupServerModul() {
-  server.on("/fillsolid", HTTP_GET, []() {
-    server.send(200, "text/plain", "recived");
-    Serial.println("recived fill solid");
-    getBrightnessFromServer();
-    getRGBFromServer();
-    fill_solid(leds, NUM_LEDS, color);
-    FastLED.setBrightness(brightness);
-    FastLED.show();
-  });
-
-  server.on("/effect", HTTP_GET, handleEffects);
-}
-
-void handleEffects() {
-  server.send(200, "text/plain", "recived");
-  Serial.println("called effects");
-  //getting parmams
-  String effect = "";
-  if (server.hasArg("effect")) {
-    effect = server.arg("effect");
-  }
-  if (server.hasArg("speed")) {
-    setLedSpeed(server.arg("speed").toInt());
-  }
-
-  //execute effect
-  if (effect == "rainbow") {
-    Serial.println("called effects: rainbow");
-    rainbow();
-    FastLED.show();
-  }
-}
-
-void setLedSpeed(int s) {
-  ledSpeed = s;
-}
-
-void getBrightnessFromServer() {
-  if (server.hasArg("brightness")) {
-    brightness = server.arg("brightness").toInt();
-    if (brightness > 255)
-      brightness = 255;
-    else if (brightness < 0)
-      brightness = 0;
-  }
-}
-
-void getRGBFromServer() {
-  int r = 0;
-  int g = 0;
-  int b = 0;
-  bool setColor = false;
-  if (server.hasArg("r")) {
-    r = server.arg("r").toInt();
-    if (r > 255)
-      r = 255;
-    else if (r < 0)
-      r = 0;
-    setColor = true;
-  }
-
-  if (server.hasArg("g")) {
-    g = server.arg("g").toInt();
-    if (g > 255)
-      g = 255;
-    else if (g < 0)
-      g = 0;
-    setColor = true;
-  }
-
-  if (server.hasArg("b")) {
-    b = server.arg("b").toInt();
-    if (b > 255)
-      b = 255;
-    else if (b < 0)
-      b = 0;
-    setColor = true;
-  }
-  if (setColor) {
-    CRGB c(g, r, b);
-    color = c;
-  }
+  CRGB strip[294];
+  FastLED.addLeds<WS2811,14, GRB>(strip, 294);
+  stripTable = new LedStrip(294,0,&server,strip,"table");
+  Serial.println("Modul ready!!!");
 }
 
 //ab address 102
@@ -163,12 +60,6 @@ void eepromWrites() {
 //ab address 102
 void eepromReads() {
 
-}
-
-//effects
-void rainbow() {
-  // FastLED's built-in rainbow generator
-  fill_rainbow( leds, NUM_LEDS, gHue, 5);
 }
 
 void setup() {
@@ -217,9 +108,7 @@ void setup() {
 void loop() {
   server.handleClient();
   MDNS.update();
-  EVERY_N_MILLISECONDS(ledSpeed) {
-    //ledEffect.action();
-    gHue++;  // slowly cycle the "base color" through the rainbow
+  EVERY_N_MILLISECONDS(50) {
   }
 }
 
