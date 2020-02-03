@@ -10,7 +10,7 @@ class LedStrip {
   }
 
   void handleRoot(){
-    server->send(200, "text/plain", "This is a device");
+    server->send(200, "text/plain", String("led strip: " + stripName));
   }
 
   void handleFillSolid(){
