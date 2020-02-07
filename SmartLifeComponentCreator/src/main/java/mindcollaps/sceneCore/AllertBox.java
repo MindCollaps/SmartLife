@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -80,6 +81,44 @@ public class AllertBox {
             public void handle(WindowEvent event) {
                 if(closeProgramOnExit)engine.closeProgram(true);
             }
+        });
+
+        allertBox.showAndWait();
+        return returnValue;
+    }
+
+    public int displayChoiceBox(String title, String windowsTitle,String[] choices, boolean closeProgramOnExit){
+        allertBox = createDefaultStage(windowsTitle);
+
+        Label label = new Label(title);
+        label.setId("labelMessage");
+
+        ChoiceBox box = new ChoiceBox();
+        box.getItems().addAll(choices);
+
+        Button ok = new Button("Ok");
+        ok.setId("buttonGreen");
+
+        VBox layout = new VBox();
+        layout.setSpacing(20);
+        HBox l = new HBox();
+        l.setSpacing(15);
+
+        l.getChildren().addAll(box, ok);
+        l.setAlignment(Pos.CENTER);
+
+        layout.getChildren().addAll(label, l);
+        layout.setAlignment(Pos.CENTER);
+        layout.setId("allertBox");
+        allertBox.setScene(createDefaultScene(layout));
+
+        ok.setOnMouseClicked(event -> {
+            returnValue = box.getSelectionModel().getSelectedIndex();
+            allertBox.close();
+        });
+
+        allertBox.setOnCloseRequest(event -> {
+            if(closeProgramOnExit)engine.closeProgram(true);
         });
 
         allertBox.showAndWait();

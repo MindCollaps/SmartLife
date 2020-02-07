@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Engine {
 
     Stage primaryStage;
-    FileUtils fileUtils = new FileUtils(this, "data");
+    FileUtils fileUtils;
     ViewEngine viewEngine;
 
     ArrayList<JSONObject> modules = new ArrayList<>();
@@ -22,6 +22,7 @@ public class Engine {
 
 
     public void boot(Stage primary) {
+        fileUtils = new FileUtils(this, "data");
         primaryStage = primary;
         viewEngine = new ViewEngine(this, primaryStage);
         loadAllFiels();

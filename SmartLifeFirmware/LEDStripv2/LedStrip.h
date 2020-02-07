@@ -1,6 +1,8 @@
  #include "FastLED.h"
+ #include "LedEffect.h"
 class LedStrip {
   private:
+  bool ledUpdate = false;
   void setupStripServer(){
     Serial.println(String("Setup " + stripName + " setting up variables"));
     server->on(String("/" + stripName), std::bind(&LedStrip::handleRoot, this));
@@ -14,9 +16,11 @@ class LedStrip {
   }
 
   void handleFillSolid(){
+    CRGB strip[numLeds];
     server->send(200, "text/plain", "recived");
     getBrightnessFromServer();
     getRGBFromServer();
+    runningEffect.setActive(false);
     fill_solid(strip, numLeds, color);
     FastLED[stripId].showLeds(brightness);
   }
@@ -57,6 +61,7 @@ void getRGBFromServer() {
 }
 
 void handleEffects() {
+  CRGB strip[numLeds];
   server->send(200, "text/plain", "recived");
   Serial.println("called effects");
   //getting parmams
@@ -67,24 +72,25 @@ void handleEffects() {
   if (server->hasArg("speed")) {
    ledSpeed = server->arg("speed").toInt();
   }
+  getBrightnessFromServer();
 
   //execute effect
   if (effect == "rainbow") {
     Serial.println("called effects: rainbow");
-    fill_rainbow(strip, numLeds, gHue, 5);
-    FastLED[stripId].showLeds(brightness);
+    updateEffect(rainbow);
   }
 }
 
-void loop(){
-  EVERY_N_MILLISECONDS(ledSpeed) {
-    gHue++;
-  }
-} 
+void updateEffect(LedEffect effect){
+  runningEffect.setActive(false);
+  runningEffect = effect;
+  runningEffect.setEffectSpeed(ledSpeed);
+  runningEffect.setBright(255);
+  runningEffect.setActive(true);
+}
   public:
   ESP8266WebServer* server;
   //ledStrip
-  CRGB* strip;
   int numLeds;
   String stripName;
   int stripId;
@@ -94,27 +100,49 @@ void loop(){
   int brightness = 155;
 
   //ledEffectConfigs
-  uint8_t gHue = 0; // rotating "base color"
-  int ledSpeed = 40;
+  int ledSpeed = 50;
+  LedEffect rainbow;
+  LedEffect runningEffect;
 
-  LedStrip(int numLeds, int stripId, ESP8266WebServer* server, CRGB* strip, String stripName){
+  LedStrip(int numLeds, int stripId, ESP8266WebServer* server, String stripName){
+    CRGB strip[numLeds];
     this->server = server;
     this->numLeds = numLeds;
     this->stripId = stripId;
-    this->strip = strip;
     this->stripName = stripName;
-    color = (40, 0, 255);
-    fill_solid(strip, numLeds, color);
-    FastLED[stripId].showLeds(brightness);
+    this->color = (40, 0, 255);
+    setupEffects();
     setupStripServer();
+    fill_solid(strip, numLeds, color);
+    FastLED[stripId].showLeds();
+  }
+
+  void setupEffects(){
+    CRGB strip[numLeds];
+    rainbow.setNumLeds(numLeds);
+    rainbow.onAction([](int numLeds, uint8_t gHue, int stripId, int brightness){
+      CRGB strip[numLeds];
+
+      CHSV hsv;
+    hsv.hue = gHue;
+    hsv.val = 255;
+    hsv.sat = 240;
+       for( int i = 0; i < numLeds; i++) {
+        strip[i] = hsv;
+        hsv.hue += 5;
+    }
+      FastLED[stripId].showLeds();
+    });
   }
 
   void setColor(CRGB color){
+    CRGB strip[numLeds];
     fill_solid(strip, numLeds, color);
     this->color = color;
   }
 
   void setColor(int r, int g, int b){
+    CRGB strip[numLeds];
     if (r > 255)
       r = 255;
     else if (r < 0)
@@ -133,5 +161,9 @@ void loop(){
     CRGB color(r, g, b);
     fill_solid(strip, numLeds, color);
     this->color = color;
+  }
+
+  void update(){
+    runningEffect.update();
   }
 };

@@ -9,8 +9,7 @@
 #include <FS.h>
 #include <time.h>
 
-//own classes
-#include "LedEffect.h"
+//own classe
 #include "LedStrip.h"
 
 String modulName = "test_modul";
@@ -46,9 +45,9 @@ LedStrip* stripTable;
 //Modul type config
 void setupModul() {
   Serial.println("Setup modul");
-  CRGB strip[294];
-  FastLED.addLeds<WS2811,14, GRB>(strip, 294);
-  stripTable = new LedStrip(294,0,&server,strip,"table");
+  CRGB strip[288];
+  FastLED.addLeds<WS2811,14, BRG>(strip, 288);
+  stripTable = new LedStrip(288,0,&server,"table");
   Serial.println("Modul ready!!!");
 }
 
@@ -59,7 +58,6 @@ void eepromWrites() {
 
 //ab address 102
 void eepromReads() {
-
 }
 
 void setup() {
@@ -108,8 +106,7 @@ void setup() {
 void loop() {
   server.handleClient();
   MDNS.update();
-  EVERY_N_MILLISECONDS(50) {
-  }
+  stripTable->update();
 }
 
 void setupServer() {

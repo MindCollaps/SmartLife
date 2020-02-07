@@ -1,0 +1,25 @@
+{
+  "devices": [
+    {
+      "path": "table",
+      "features": [
+        {
+          "effects": [
+            "rainbow",
+            "theaterChase"
+          ],
+          "effectTypeVar:": "effect",
+          "singleLed:": "led",
+          "effectSpeedVar:": "speed",
+          "name": "digitalLedStrip",
+          "color:": "rgb",
+          "ledCount:": "278",
+          "brightness:": "brightness",
+          "effectPath:": "effect"
+        }
+      ],
+      "name": "tabel"
+    }
+  ],
+  "name": "ich bin das modul"
+}

@@ -28,6 +28,7 @@ public class ViewEngine {
 
     private void setupView() {
         loadScenes();
+        homeController.loadFeatures();
         openHome();
         viewLoaded = true;
     }

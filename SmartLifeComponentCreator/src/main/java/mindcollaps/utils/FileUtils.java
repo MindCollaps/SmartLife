@@ -84,6 +84,7 @@ public class FileUtils {
         try {
             Reader reader = new FileReader(file.getAbsolutePath());
             object = (JSONObject) parser.parse(reader);
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("ERRORORORRO!!!!");
@@ -96,6 +97,7 @@ public class FileUtils {
         try {
             FileWriter fileWriter = new FileWriter(path);
             fileWriter.write(object.toJSONString());
+            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

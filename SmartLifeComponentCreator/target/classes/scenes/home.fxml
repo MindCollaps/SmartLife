@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -10,24 +9,35 @@
 
 <AnchorPane fx:id="mainAnchor" prefHeight="600.0" prefWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mindcollaps.sceneCore.sceneController.HomeController">
    <children>
-      <VBox fx:id="vContent" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-         <padding>
-            <Insets top="25.0" />
-         </padding>
-      </VBox>
       <MenuBar fx:id="menu" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#onNewModulClicked" text="New Modul" />
                   <MenuItem mnemonicParsing="false" onAction="#onOpenModulClicked" text="Open Modul" />
+                  <MenuItem mnemonicParsing="false" onAction="#onReloadFilesClicked" text="Reload files" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#onSafeClicked" text="Safe" />
+                  <Menu mnemonicParsing="false" text="Safe">
+                    <items>
+                        <Menu mnemonicParsing="false" text="Modul">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onSafeModulClicked" text="Safe" />
+                              <MenuItem mnemonicParsing="false" onAction="#onSafeAllModulesInOneClicked" text="Safe all in one" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Feature">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#onSafeFeatureClicked" text="Safe" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#onCloseClicked" text="Close" />
                </items>
           </Menu>
         </menus>
       </MenuBar>
+      <VBox fx:id="vContent" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
    </children>
 </AnchorPane>
