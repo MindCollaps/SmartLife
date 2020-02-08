@@ -106,7 +106,9 @@ void setup() {
 void loop() {
   server.handleClient();
   MDNS.update();
-  stripTable->update();
+  if(!configMode){
+     stripTable->update();
+  }
 }
 
 void setupServer() {
