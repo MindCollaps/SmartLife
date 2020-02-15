@@ -9,5 +9,9 @@
     <string name="menu_txt_bridge" translatable="false">Bridge</string>
     <string name="button_disconnect">Disconnect</string>
     <string name="word_name">Name</string>
+    <string name="title_activity_device">DeviceActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

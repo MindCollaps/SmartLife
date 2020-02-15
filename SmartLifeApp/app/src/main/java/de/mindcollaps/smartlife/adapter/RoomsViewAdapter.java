@@ -1,4 +1,4 @@
-package de.mindcollaps.smartlife;
+package de.mindcollaps.smartlife.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,14 +13,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+import de.mindcollaps.smartlife.R;
+import de.mindcollaps.smartlife.UpdateHandler;
+import de.mindcollaps.smartlife.files.Room;
+
+public class RoomsViewAdapter extends RecyclerView.Adapter<RoomsViewAdapter.ViewHolder>{
+
+    public static final String TAG = "RoomsViewAdapter";
 
     private ArrayList<String> roomNames = new ArrayList<>();
+    private ArrayList<Room> rooms = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<String> roomNames, Context mContext) {
-        this.roomNames = roomNames;
+    public RoomsViewAdapter(ArrayList<Room> rooms, Context mContext) {
         this.mContext = mContext;
+        this.rooms = rooms;
+
+        for (Room r:rooms) {
+            roomNames.add(r.getName());
+        }
+
     }
 
     @NonNull
@@ -37,8 +49,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, roomNames.get(position), Toast.LENGTH_SHORT).show();
+                UpdateHandler.setRoom(rooms.get(position));
             }
         });
+        holder.textView.setText(roomNames.get(position));
     }
 
     @Override
@@ -53,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.roomName);
-            relativeLayout = itemView.findViewById(R.id.parentLayout);
+            relativeLayout = itemView.findViewById(R.id.parentLayoutR);
         }
     }
 }

@@ -1,16 +1,22 @@
 package de.mindcollaps.smartlife;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import de.mindcollaps.smartlife.files.Device;
+import de.mindcollaps.smartlife.files.Room;
+import de.mindcollaps.smartlife.ui.FragmentRoom;
+import de.mindcollaps.smartlife.ui.FragmentRoomList;
+
 public class ScreenActivity extends Activity {
+
+    public static final String TAG = "ScreenActivity";
 
 
     @Override
@@ -23,7 +29,14 @@ public class ScreenActivity extends Activity {
         setContentView(R.layout.screen_activity);
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
-        loadFragment(new FragmentRooms());
+        loadFragment(new FragmentRoomList());
+        setupUpdateHandler();
+
+    }
+
+    private void setupUpdateHandler(){
+        new RoomUpdateHandler();
+        new DeviceUpdateHandler();
     }
 
     @Override
@@ -42,6 +55,66 @@ public class ScreenActivity extends Activity {
             return true;
         } else {
             return false;
+        }
+    }
+
+    private ScreenActivity getOuterClass(){
+        return this;
+    }
+
+    public class RoomUpdateHandler {
+
+        public RoomUpdateHandler() {
+            new Thread(new UpdateRunner()).start();
+        }
+
+        public void update(Room room){
+            loadFragment(new FragmentRoom());
+        }
+
+        private class UpdateRunner implements Runnable {
+
+            @Override
+            public void run() {
+                while (true){
+                    while (!UpdateHandler.roomChanged){
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    update(UpdateHandler.getRoom());
+                }
+            }
+        }
+    }
+
+    public class DeviceUpdateHandler {
+
+        public DeviceUpdateHandler() {
+            new Thread(new UpdateRunner()).start();
+        }
+
+        public void update(Device device){
+            startActivity(new Intent(getOuterClass(), DeviceActivity.class));
+        }
+
+        private class UpdateRunner implements Runnable {
+
+            @Override
+            public void run() {
+                while (true){
+                    while (!UpdateHandler.deviceChanged){
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    update(UpdateHandler.getDevice());
+                }
+            }
         }
     }
 }
