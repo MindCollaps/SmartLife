@@ -39,15 +39,14 @@ String wlanPw = "";
 #define locationConfigJson "/config.json"
 
 //Strip controller
-#define NUM_STRIPS 0
 LedStrip* stripTable;
 
 //Modul type config
 void setupModul() {
   Serial.println("Setup modul");
-  CRGB strip[288];
-  FastLED.addLeds<WS2811,14, BRG>(strip, 288);
-  stripTable = new LedStrip(288,0,&server,"table");
+  CRGB strip[316];
+  FastLED.addLeds<WS2812,14, RGB>(strip, 316);
+  stripTable = new LedStrip(316,0,&server,"table");
   Serial.println("Modul ready!!!");
 }
 
@@ -202,7 +201,7 @@ void setupWifiConnection() {
     delay(500);
     Serial.print(".");
     tried++;
-    if (tried >= 100) {
+    if (tried >= 50) {
       configMode = true;
       Serial.println("Wifi connection failed, going in config mode!");
       return;

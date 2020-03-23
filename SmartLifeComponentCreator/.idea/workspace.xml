@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d108d285-2d6b-4c9d-b034-81c19fd2ed7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/java/de/mindcollaps/smartlife/Activity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/java/de/mindcollaps/smartlife/FragmentRooms.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/java/de/mindcollaps/smartlife/Main2Activity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/layout/activity_main2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/layout/activity_screen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/layout/content_main2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartLifeApp/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeApp/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeApp/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartLifeComponentCreator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SmartLifeComponentCreator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LEDStripv2.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LEDStripv2.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LedEffect.h" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LedEffect.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LedStrip.h" beforeDir="false" afterPath="$PROJECT_DIR$/../SmartLifeFirmware/LEDStripv2/LedStrip.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.web.jar!/" />
+    <property name="last_opened_file_path" value="D:/Stick/Schule/AIT-2019-2020/Workspace/TGI-2019" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -110,10 +97,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="666" y="262" key="FileChooserDialogImpl" timestamp="1581703142380">
+    <state x="666" y="262" key="FileChooserDialogImpl" timestamp="1584611160330">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="666" y="262" key="FileChooserDialogImpl/0.0.1920.1040/-1920.112.1920.1040@0.0.1920.1040" timestamp="1581703142380" />
+    <state x="666" y="262" key="FileChooserDialogImpl/0.0.1920.1040/-1920.112.1920.1040@0.0.1920.1040" timestamp="1584611160330" />
     <state x="440" y="95" key="SettingsEditor" timestamp="1581703145735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
